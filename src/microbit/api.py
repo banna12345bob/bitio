@@ -40,6 +40,15 @@ class MicroBit():
             r = eval(r)
             return r
 
+    class ReadAnalog():
+        def __init__(self, name):
+            self.name = name
+
+        def read_analog(self):
+            r = self.parent.cmd("print(%s.read_analog())" % self.name)
+            r = eval(r)
+            return r
+
     class Button():
         def __init__(self, name):
             self.name = name
@@ -187,9 +196,9 @@ class MicroBit():
     button_b      = Button('button_b')
     accelerometer = Accelerometer("accelerometer")
     display       = Display("display")
-    pin0          = TouchPin("pin0")
-    pin1          = TouchPin("pin1")
-    pin2          = TouchPin("pin2")
+    pin0          = ReadAnalog("pin0")
+    pin1          = ReadAnalog("pin1")
+    pin2          = ReadAnalog("pin2")
     radio         = Radio("radio")
 
     # Dynamically build attributes in Image for every standard image
